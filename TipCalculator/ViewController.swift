@@ -17,23 +17,29 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var submittedPeople: UITextField!
     
+    @IBOutlet weak var tipInDollars: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        
+
+        
+    }
+
+    // calculates the total tips
+    @IBAction func totalTip(_ sender: Any) {
+      
         // Text FieldsΩ
         let billAmount = submittedAmount!
         let tipPercentage = submittedTipPercentage!
         let splitBetweenHowManyPeople = submittedPeople!
         
         // Simulate User Input
-        billAmount.text = "100"
-        tipPercentage.text = "15"
-        splitBetweenHowManyPeople.text = "2"
-        
-        
-        // Get actual strings from each textfield
-        // (force unwrapping the optional strings contained in each textfield)
+//        billAmount.text = "100"
+//        tipPercentage.text = "15"
+//        splitBetweenHowManyPeople.text = "2"
         
         let billAmountAsString = billAmount.text!
         let tipPercentageAsString = tipPercentage.text!
@@ -47,11 +53,10 @@ class ViewController: UIViewController {
         // Calculate the tip
         let percent = 0.01
         let tipAmountInDollars = billAmountAsDouble * tipPercentageAsDouble * percent
-
         
+        tipInDollars.text = String(tipAmountInDollars)
+       
     }
-
-    
     
 
 }

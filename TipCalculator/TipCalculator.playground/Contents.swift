@@ -6,7 +6,7 @@ let tipPercentage = UITextField()
 let splitBetweenHowManyPeople = UITextField()
 
 // Simulate User Input
-billAmount.text = ""
+billAmount.text = "100"
 tipPercentage.text = "15"
 splitBetweenHowManyPeople.text = "2"
 
