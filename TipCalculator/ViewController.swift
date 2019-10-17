@@ -19,6 +19,8 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var tipInDollars: UILabel!
     
+    @IBOutlet weak var tipPerPerson: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -53,8 +55,10 @@ class ViewController: UIViewController {
         // Calculate the tip
         let percent = 0.01
         let tipAmountInDollars = billAmountAsDouble * tipPercentageAsDouble * percent
+        let tipForOne = tipAmountInDollars/splitBetweenHowManyPeopleAsDouble
         
-        tipInDollars.text = String(tipAmountInDollars)
+        tipInDollars.text = "$\(String(tipAmountInDollars))"
+        tipPerPerson.text = "$\(String(tipForOne))"
        
     }
     
