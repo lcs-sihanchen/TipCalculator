@@ -9,7 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     
     @IBOutlet weak var submittedAmount: UITextField!
     
@@ -26,22 +26,22 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         
-
+        
         
     }
-
+    
     // calculates the total tips
     @IBAction func totalTip(_ sender: Any) {
-      
+        
         // Text FieldsΩ
         let billAmount = submittedAmount!
         let tipPercentage = submittedTipPercentage!
         let splitBetweenHowManyPeople = submittedPeople!
         
         // Simulate User Input
-//        billAmount.text = "100"
-//        tipPercentage.text = "15"
-//        splitBetweenHowManyPeople.text = "2"
+        //        billAmount.text = "100"
+        //        tipPercentage.text = "15"
+        //        splitBetweenHowManyPeople.text = "2"
         
         let billAmountAsString = billAmount.text!
         let tipPercentageAsString = tipPercentage.text!
@@ -54,14 +54,22 @@ class ViewController: UIViewController {
         
         // Calculate the tip
         let percent = 0.01
-        let tipAmountInDollars = billAmountAsDouble * tipPercentageAsDouble * percent
-        let tipForOne = tipAmountInDollars/splitBetweenHowManyPeopleAsDouble
         
-        tipInDollars.text = "$\(String(tipAmountInDollars))"
-        tipPerPerson.text = "$\(String(tipForOne))"
-       
+        let tipAmountInCents = billAmountAsDouble * tipPercentageAsDouble * percent * 100
+        let tipAmountInDollars = tipAmountInCents/100
+        let tipForOneInCents = tipAmountInCents/splitBetweenHowManyPeopleAsDouble
+        let tipForOneInCentsAsInt = Int(tipForOneInCents)
+        let tipForOneInCentsAsDouble = Double(tipForOneInCentsAsInt)
+        let finalOutput = tipForOneInCentsAsDouble/100
+
+        let tipAmountInDollarsAsString = String(tipAmountInDollars)
+        
+        
+        tipInDollars.text = "$\(tipAmountInDollarsAsString)"
+        tipPerPerson.text = "$\(String(finalOutput))"
+        
     }
     
-
+    
 }
 
