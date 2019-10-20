@@ -29,6 +29,7 @@ class ViewController: UIViewController {
     
     
     
+    
     @IBOutlet weak var fivePercentTip: UIButton!
     
     func quickCalculationForTip (tipPercentage:Double){
