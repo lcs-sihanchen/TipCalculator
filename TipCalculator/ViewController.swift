@@ -33,10 +33,19 @@ class ViewController: UIViewController {
     @IBOutlet weak var fivePercentTip: UIButton!
     
     func quickCalculationForTip (tipPercentage:Double){
-        let billAmountAsString = submittedAmount.text!
-        let splitBetweenHowManyPeopleAsString = submittedPeople.text!
-        let billAmountAsDouble = Double(billAmountAsString)!
-        let splitBetweenHowManyPeopleAsDouble = Double(splitBetweenHowManyPeopleAsString)!
+        
+        guard let billAmountAsString = submittedAmount.text else{
+            return
+        }
+        guard let splitBetweenHowManyPeopleAsString = submittedPeople.text else{
+            return
+        }
+        guard let billAmountAsDouble = Double(billAmountAsString) else{
+            return
+        }
+        guard let splitBetweenHowManyPeopleAsDouble = Double(splitBetweenHowManyPeopleAsString) else{
+            return
+        }
         let tipAmountInDollars = billAmountAsDouble * tipPercentage/100
         let tipForOneInCents = 100 * billAmountAsDouble * tipPercentage/splitBetweenHowManyPeopleAsDouble/100
         let tipForOneInDollars = tipForOneInCents/100
@@ -72,12 +81,17 @@ class ViewController: UIViewController {
     
     
     @IBAction func otherPercentage(_ sender: Any) {
-        let otherPercentageAsString = submittedTipPercentage.text!
-        let otherPercentageAsDouble =
-            Double(otherPercentageAsString)!
+        
+        guard let otherPercentageAsString = submittedTipPercentage.text else {
+            return
+        }
+        guard let otherPercentageAsDouble =
+            Double(otherPercentageAsString) else{
+                return
+        }
         quickCalculationForTip(tipPercentage: otherPercentageAsDouble)
     }
     
-
+    
 }
 
