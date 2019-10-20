@@ -25,51 +25,58 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        
-        
-        
     }
     
-    // calculates the total tips
-    @IBAction func totalTip(_ sender: Any) {
-        
-        // Text FieldsΩ
-        let billAmount = submittedAmount!
-        let tipPercentage = submittedTipPercentage!
-        let splitBetweenHowManyPeople = submittedPeople!
-        
-        // Simulate User Input
-        //        billAmount.text = "100"
-        //        tipPercentage.text = "15"
-        //        splitBetweenHowManyPeople.text = "2"
-        
-        let billAmountAsString = billAmount.text!
-        let tipPercentageAsString = tipPercentage.text!
-        let splitBetweenHowManyPeopleAsString = splitBetweenHowManyPeople.text!
-        
-        // Convert strings to Double data type
+    
+    
+    @IBOutlet weak var fivePercentTip: UIButton!
+    
+    func quickCalculationForTip (tipPercentage:Double){
+        let billAmountAsString = submittedAmount.text!
+        let splitBetweenHowManyPeopleAsString = submittedPeople.text!
         let billAmountAsDouble = Double(billAmountAsString)!
-        let tipPercentageAsDouble = Double(tipPercentageAsString)!
         let splitBetweenHowManyPeopleAsDouble = Double(splitBetweenHowManyPeopleAsString)!
-        
-        // Calculate the tip
-        let percent = 0.01
-        
-        let tipAmountInCents = billAmountAsDouble * tipPercentageAsDouble * percent * 100
-        let tipAmountInDollars = tipAmountInCents/100
-        let tipForOneInCents = tipAmountInCents/splitBetweenHowManyPeopleAsDouble
+        let tipAmountInDollars = billAmountAsDouble * tipPercentage/100
+        let tipForOneInCents = 100 * billAmountAsDouble * tipPercentage/splitBetweenHowManyPeopleAsDouble/100
+        let tipForOneInDollars = tipForOneInCents/100
         let tipForOneInCentsAsInt = Int(tipForOneInCents)
         let tipForOneInCentsAsDouble = Double(tipForOneInCentsAsInt)
         let finalOutput = tipForOneInCentsAsDouble/100
-
-        let tipAmountInDollarsAsString = String(tipAmountInDollars)
-        
-        
-        tipInDollars.text = "$\(tipAmountInDollarsAsString)"
+        tipInDollars.text = "$\(tipAmountInDollars)"
         tipPerPerson.text = "$\(String(finalOutput))"
         
     }
     
+    // Calculate with different percentage
     
+    // calculates the total tips
+    
+    @IBAction func fivePercentTip(_ sender: Any) {
+        quickCalculationForTip(tipPercentage: 5)
+    }
+    
+    @IBAction func tenPercentTip(_ sender: Any) {
+        quickCalculationForTip(tipPercentage: 10)
+    }
+    
+    
+    @IBAction func fifteenPercentTip(_ sender: Any) {
+        quickCalculationForTip(tipPercentage: 15)
+    }
+    
+    
+    @IBAction func twentyPercentTip(_ sender: Any) {
+        quickCalculationForTip(tipPercentage: 20)
+    }
+    
+    
+    @IBAction func otherPercentage(_ sender: Any) {
+        let otherPercentageAsString = submittedTipPercentage.text!
+        let otherPercentageAsDouble =
+            Double(otherPercentageAsString)!
+        quickCalculationForTip(tipPercentage: otherPercentageAsDouble)
+    }
+    
+
 }
 
