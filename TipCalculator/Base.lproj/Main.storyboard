@@ -111,7 +111,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rV9-f4-Wjd">
                                 <rect key="frame" x="228" y="374" width="31" height="31"/>
@@ -154,7 +154,6 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="fivePercentTip" destination="lry-Pq-Gnz" id="F4d-d9-SbY"/>
                         <outlet property="submittedAmount" destination="Roa-PK-sGT" id="5VD-3Q-fbS"/>
                         <outlet property="submittedPeople" destination="vIc-j1-12M" id="oOs-F5-QGD"/>
                         <outlet property="submittedTipPercentage" destination="Ptc-K4-Vj2" id="yrG-8G-oYX"/>

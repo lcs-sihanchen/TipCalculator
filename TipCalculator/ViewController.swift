@@ -10,6 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    // Connecting the textfields (Input) to the code
     
     @IBOutlet weak var submittedAmount: UITextField!
     
@@ -17,9 +18,17 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var submittedPeople: UITextField!
     
+    // Connecting the output to the code
+    
     @IBOutlet weak var tipInDollars: UILabel!
     
     @IBOutlet weak var tipPerPerson: UILabel!
+    
+    // Dismiss the keyboard
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+        super.touchesBegan(touches, with: event)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,10 +36,7 @@ class ViewController: UIViewController {
         
     }
     
-    
-    
-    
-    @IBOutlet weak var fivePercentTip: UIButton!
+    // Create the function to calculate the tip using the input values
     
     func quickCalculationForTip (tipPercentage:Double){
         
@@ -57,9 +63,7 @@ class ViewController: UIViewController {
         
     }
     
-    // Calculate with different percentage
-    
-    // calculates the total tips
+    // Calculate with different percentage with the function and the total tip
     
     @IBAction func fivePercentTip(_ sender: Any) {
         quickCalculationForTip(tipPercentage: 5)
@@ -79,7 +83,7 @@ class ViewController: UIViewController {
         quickCalculationForTip(tipPercentage: 20)
     }
     
-    
+    // Create an action for other percentage using the function
     @IBAction func otherPercentage(_ sender: Any) {
         
         guard let otherPercentageAsString = submittedTipPercentage.text else {
